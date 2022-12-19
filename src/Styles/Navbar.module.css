@@ -1,0 +1,24 @@
+.navbar {
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    position: absolute;
+    left: 0;
+    margin-inline-start: 2rem;
+    cursor: pointer;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    gap: 3rem;
+    width: max-content;
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}

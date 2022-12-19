@@ -4,6 +4,7 @@ import {signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from "../index";
 import {useHistory} from "react-router-dom";
 
+
 const Login = () => {
 
     const history = useHistory();
@@ -37,7 +38,7 @@ const Login = () => {
 
         event.preventDefault();
     }
-    
+
     return (
         <>
             <Navbar/>
