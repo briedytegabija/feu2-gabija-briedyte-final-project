@@ -1,15 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import {Route, Switch} from 'react-router-dom';
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <h1>app</h1>
-    </div>
-  )
+      <Switch>
+          <Route path={'/register'} component={Register}/>
+          <Route path={'/login'} component={Login}/>
+      </Switch>
+  );
 }
 
-export default App
+export default App;
+
