@@ -7,6 +7,28 @@ import styles from "../Styles/Shops.module.css"
 import {db} from "../index";
 
 const Shops = () => {
+    const isAuth = useAuth();
+
+    const [loaded, setLoaded] = useState(false);
+    const [shops] = useState([]);
+
+    const getShops = useCallback(async () => {
+        const querySnapshot = await getDocs(collection(db, "shops"));
+        querySnapshot.forEach((doc) => {
+            shops.push(doc.data());
+        });
+    }, []);
+
+    useEffect(() => {
+        getShops().then(() => {
+            setLoaded(true);
+        }).catch((error) => {
+            console.log(error);
+        });
+
+
+    }, [getShops]);
+
     return (<>
         {!isAuth && <Redirect to={'/login'}/>}
         <div>
