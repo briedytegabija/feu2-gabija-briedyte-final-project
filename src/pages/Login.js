@@ -5,6 +5,39 @@ import {auth} from "../index";
 import {useHistory} from "react-router-dom";
 
 const Login = () => {
+
+    const history = useHistory();
+
+    const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password)
+
+    const [userInfo, setUserInfo] = useState({
+        email: "",
+        password: "",
+    });
+
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleInputChange = (event) => {
+        setUserInfo({
+            ...userInfo,
+            [event.target.name]: event.target.value
+        });
+    }
+
+    const validateAndSubmit = (event) => {
+        signIn(userInfo.email, userInfo.password).then(() => {
+            setErrorMessage("");
+            // add current user to local storage
+            localStorage.setItem("user", JSON.stringify(auth.currentUser));
+            history.push("/");
+        }).catch((error) => {
+            console.log(error);
+            setErrorMessage("Invalid username or password");
+        });
+
+        event.preventDefault();
+    }
+    
     return (
         <>
             <Navbar/>
